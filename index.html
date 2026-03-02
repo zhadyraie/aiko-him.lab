@@ -1,87 +1,91 @@
 <!DOCTYPE html>
 <html lang="kk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Виртуалды химия зертханасы</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* Негізгі стильдер */
-        :root {
-            --primary-color: #0d47a1;
-            --secondary-color: #00c853;
-            --bg-light: #f4fbff;
-            
-        
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Виртуалды химия зертханасы</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --primary-color: #0d47a1;
+    --secondary-color: #00c853;
+    --bg-light: #f4fbff;
+}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Roboto', sans-serif; background: var(--bg-light); color: #222; scroll-behavior: smooth; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Roboto', sans-serif; background: var(--bg-light); color: #222; scroll-behavior: smooth; }
 
-        /* Hero секциясы */
-        header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(-45deg, #1e88e5, #0d47a1, #00c853, #2e7d32);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            color: white;
-            padding: 0 20px;
-        }
+/* Hero секциясы */
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(-45deg, #1e88e5, #0d47a1, #00c853, #2e7d32);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    color: white;
+    padding: 0 20px;
+}
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+header h1 { font-size: 3.5rem; margin-bottom: 20px; }
+header p { font-size: 1.4rem; opacity: 0.9; }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+/* Навигация */
+nav { position: sticky; top: 0; background: rgba(0, 0, 0, 0.9); padding: 15px; text-align: center; z-index: 100; backdrop-filter: blur(10px); }
+nav a { color: #00e676; margin: 0 15px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+nav a:hover { color: #fff; text-shadow: 0 0 10px #00e676; }
 
-        header h1 { font-size: 3.5rem; margin-bottom: 20px; }
-        header p { font-size: 1.4rem; opacity: 0.9; }
+/* Секциялар мен карточкалар */
+section { padding: 80px 20px; max-width: 1000px; margin: auto; }
+.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: var(--primary-color); position: relative; }
+.section-title::after { content: ''; display: block; width: 60px; height: 4px; background: var(--secondary-color); margin: 10px auto; }
 
-        /* Навигация */
-        nav { position: sticky; top: 0; background: rgba(0, 0, 0, 0.9); padding: 15px; text-align: center; z-index: 100; backdrop-filter: blur(10px); }
-        nav a { color: #00e676; margin: 0 15px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        nav a:hover { color: #fff; text-shadow: 0 0 10px #00e676; }
+.card { 
+    background: white; padding: 30px; margin-bottom: 30px; border-radius: 12px;
+    border-left: 8px solid var(--secondary-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.4s;
+}
+.card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+.card h3 { color: var(--primary-color); margin-bottom: 15px; }
+.card p { margin-bottom: 10px; line-height: 1.5; }
 
-        /* Секциялар мен Карточкалар */
-        section { padding: 80px 20px; max-width: 1000px; margin: auto; }
-        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: var(--primary-color); position: relative; }
-        .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: var(--secondary-color); margin: 10px auto; }
+button { background: var(--secondary-color); color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+button:hover { background: #00a944; box-shadow: 0 5px 15px rgba(0,200,83,0.4); }
 
-        .card { 
-            background: white; padding: 30px; margin-bottom: 30px; border-radius: 12px;
-            border-left: 8px solid var(--secondary-color);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.4s;
-        }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .card h3 { color: var(--primary-color); margin-bottom: 15px; }
+/* Аккордеон */
+.accordion { 
+    background: #fff; color: var(--primary-color); cursor: pointer; padding: 20px; 
+    margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;
+    width: 100%; text-align: left; font-size: 1.1rem; font-weight: bold; 
+    transition: 0.3s; display: flex; justify-content: space-between; align-items: center;
+}
+.accordion:after { content: '\002B'; font-size: 20px; }
+.accordion.active:after { content: "\2212"; }
+.accordion.active { background: var(--primary-color); color: white; }
 
-        button { background: var(--secondary-color); color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        button:hover { background: #00a944; box-shadow: 0 5px 15px rgba(0,200,83,0.4); }
+.panel { 
+    max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; 
+    background: #fff; margin-bottom: 10px; border-radius: 0 0 8px 8px; padding: 0 20px;
+}
+.panel-content { padding: 20px 0; }
 
-        /* Жақсартылған Аккордеон */
-        .accordion { 
-            background: #fff; color: var(--primary-color); cursor: pointer; padding: 20px; 
-            margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;
-            width: 100%; text-align: left; font-size: 1.1rem; font-weight: bold; 
-            transition: 0.3s; display: flex; justify-content: space-between; align-items: center;
-        }
-        .accordion:after { content: '\002B'; font-size: 20px; }
-        .accordion.active:after { content: "\2212"; }
-        .accordion.active { background: var(--primary-color); color: white; }
+/* Footer */
+footer { background: #111; color: #888; text-align:center; padding: 40px 20px; margin-top: 50px; }
 
-        .panel { 
-            max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; 
-            background: #fff; margin-bottom: 10px; border-radius: 0 0 8px 8px; padding: 0 20px;
-        }
-        .panel-content { padding: 20px 0; }
-
-        footer { background: #111; color: #888; text-align:center; padding: 40px 20px; margin-top: 50px; }
-    </style>
+/* Responsive */
+@media(max-width:768px){
+    header h1{font-size:2.5rem;}
+    header p{font-size:1.2rem;}
+    nav a{display:block;margin:10px 0;}
+}
+</style>
 </head>
 <body>
 
@@ -99,46 +103,121 @@
 
 <section id="labs">
     <h2 class="section-title">Виртуалды зертханалар</h2>
+
     <div class="card">
         <h3>1. Химиялық реакциялар</h3>
-        <p>Заттардың бір-бірімен әрекеттесу заңдылықтарын меңгеріңіз.</p>
+        <p>Заттардың бір-бірімен әрекеттесу заңдылықтарын меңгеріңіз. Қосылу, айырылу, орынбасу реакцияларын зерттеу.</p>
+        <p><b>Мақсаты:</b> Реакция түрлерін ажырату.</p>
         <a href="https://chemcollective.org/vlabs" target="_blank"><button>Тәжірибені бастау</button></a>
     </div>
-    </section>
 
-<section id="guide">
-    <h2 class="section-title">Әдістемелік көмек</h2>
-    
-    <button class="accordion">Химиялық реакциялар (8-9 сынып)</button>
-    <div class="panel">
-        <div class="panel-content">
-            <p><b>Сабақ мақсаты:</b> Реакция типтерін тәжірибе жүзінде дәлелдеу.</p>
-            <ul>
-                <li>Реагенттерді таңдаңыз</li>
-                <li>Нәтижені бақылап, теңдеуді жазыңыз</li>
-            </ul>
-        </div>
+    <div class="card">
+        <h3>2. Қышқылдар мен негіздер</h3>
+        <p>Қышқылдар сутек иондарын, негіздер гидроксид иондарын түзеді. Бейтараптану реакциясы зерттеледі.</p>
+        <p><b>Мақсаты:</b> Қышқылдық және негіздік ортаны анықтау.</p>
+        <a href="https://phet.colorado.edu/sims/html/acid-base-solutions/latest/acid-base-solutions_en.html" target="_blank"><button>Тәжірибені бастау</button></a>
+    </div>
+
+    <div class="card">
+        <h3>3. Ерітінділер және концентрация</h3>
+        <p>Ерітінді концентрациясы – еріген зат мөлшерін сипаттайды. Молярлық концентрация есептеледі.</p>
+        <p><b>Мақсаты:</b> Ерітінді дайындау және есептеу.</p>
+        <a href="https://phet.colorado.edu/sims/html/molarity/latest/molarity_en.html" target="_blank"><button>Тәжірибені бастау</button></a>
+    </div>
+
+    <div class="card">
+        <h3>4. Газдар заңдары</h3>
+        <p>Бойль-Мариотт және Шарль заңдары арқылы қысым, көлем және температура арасындағы байланыс зерттеледі.</p>
+        <p><b>Мақсаты:</b> Газ заңдарын түсіну.</p>
+        <a href="https://phet.colorado.edu/sims/html/gas-properties/latest/gas-properties_en.html" target="_blank"><button>Тәжірибені бастау</button></a>
+    </div>
+
+    <div class="card">
+        <h3>5. Тотығу-тотықсыздану реакциялары</h3>
+        <p>Электрон алмасу процестері қарастырылады. Тотығу және тотықсыздану ұғымдары түсіндіріледі.</p>
+        <p><b>Мақсаты:</b> Электрон алмасуды зерттеу.</p>
+        <a href="https://chemcollective.org/vlabs" target="_blank"><button>Тәжірибені бастау</button></a>
     </div>
 </section>
 
+<section id="guide">
+<h2 class="section-title">Әдістемелік көмек</h2>
+
+<button class="accordion">1. Химиялық реакциялар (8-9 сынып)</button>
+<div class="panel"><div class="panel-content">
+<p><b>Сабақ мақсаты:</b> Реакция типтерін тәжірибе жүзінде дәлелдеу.</p>
+<ul>
+<li>Реагенттерді таңдаңыз</li>
+<li>Нәтижені бақылап, теңдеуді жазыңыз</li>
+<li>Қорытынды жасаңыз</li>
+</ul>
+</div></div>
+
+<button class="accordion">2. Қышқылдар мен негіздер (8 сынып)</button>
+<div class="panel"><div class="panel-content">
+<ul>
+<li>Қышқылдық немесе негіздік ортаны анықтаңыз</li>
+<li>Индикатор түсін бақылаңыз</li>
+<li>Бейтараптану реакциясын жазыңыз</li>
+</ul>
+</div></div>
+
+<button class="accordion">3. Ерітінділер және концентрация (9 сынып)</button>
+<div class="panel"><div class="panel-content">
+<ul>
+<li>Ерітінді дайындау</li>
+<li>Молярлық концентрация есептеу</li>
+<li>Қорытынды жазу</li>
+</ul>
+</div></div>
+
+<button class="accordion">4. Газдар заңдары (10 сынып)</button>
+<div class="panel"><div class="panel-content">
+<ul>
+<li>Бойль-Мариотт заңын тексеру</li>
+<li>Шарль заңын тексеру</li>
+<li>Қорытынды жасау</li>
+</ul>
+</div></div>
+
+<button class="accordion">5. Тотығу-тотықсыздану реакциялары (10-11 сынып)</button>
+<div class="panel"><div class="panel-content">
+<ul>
+<li>Электрон алмасу тәжірибесі</li>
+<li>Тотығу/тотықсыздануды анықтау</li>
+<li>Қорытынды жасау</li>
+</ul>
+</div></div>
+</section>
+
+<section id="resources">
+<h2 class="section-title">Пайдаланылатын ресурстар</h2>
+<ul>
+<li>PhET Interactive Simulations: <a href="https://phet.colorado.edu" target="_blank">сілтеме</a></li>
+<li>ChemCollective Virtual Lab: <a href="https://chemcollective.org/vlabs" target="_blank">сілтеме</a></li>
+<li>Labster: <a href="https://www.labster.com" target="_blank">сілтеме</a></li>
+</ul>
+</section>
+
+<section id="feedback">
+<h2 class="section-title">Кері байланыс</h2>
+<p>Сайтты бағалау үшін <a href="https://forms.google.com" target="_blank">Google Form</a> пайдаланыңыз.</p>
+</section>
+
 <footer>
-    <p>© 2026 Виртуалды химия зертханасы. Білім беру мақсатында жасалған.</p>
+<p>© 2026 Виртуалды химия зертханасы. Білім беру мақсатында жасалған.</p>
 </footer>
 
 <script>
-    // Аккордеон функционалы (Жақсартылған нұсқа)
-    const acc = document.getElementsByClassName("accordion");
-    for (let i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            const panel = this.nextElementSibling;
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-            } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
-            }
-        });
-    }
+const acc = document.getElementsByClassName("accordion");
+for (let i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        if(panel.style.maxHeight){ panel.style.maxHeight = null; }
+        else{ panel.style.maxHeight = panel.scrollHeight + "px"; }
+    });
+}
 </script>
 
 </body>
